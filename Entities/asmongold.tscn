@@ -1,0 +1,198 @@
+[gd_scene load_steps=19 format=3 uid="uid://drcvwjqqownbc"]
+
+[ext_resource type="Texture2D" uid="uid://cepj3bstq1uup" path="res://Sprites/Shadow.png" id="1_owxxx"]
+[ext_resource type="Script" path="res://Scripts/asmongold.cs" id="1_qy2dp"]
+[ext_resource type="Texture2D" uid="uid://dng808yjngfwk" path="res://Sprites/Asmongold Spritesheet.png" id="2_l8fij"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofqrc"]
+size = Vector2(38, 54)
+
+[sub_resource type="Animation" id="Animation_x1suu"]
+resource_name = "idle_right"
+length = 0.39
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AsmongoldSpritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13, 0.26),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_kx4o7"]
+resource_name = "idle_left"
+length = 0.39
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AsmongoldSpritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13, 0.26),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_v8yrb"]
+resource_name = "idle_up"
+length = 0.39
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AsmongoldSpritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13, 0.26),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_n0tkf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AsmongoldSpritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wruhx"]
+resource_name = "idle_down"
+length = 0.39
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AsmongoldSpritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13, 0.26),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_h10l3"]
+resource_name = "moving_right"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AsmongoldSpritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 21, 22, 23]
+}
+
+[sub_resource type="Animation" id="Animation_uabwj"]
+resource_name = "moving_left"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AsmongoldSpritesheet:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15, 16, 17]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fx0k7"]
+_data = {
+"RESET": SubResource("Animation_n0tkf"),
+"idle_down": SubResource("Animation_wruhx"),
+"idle_left": SubResource("Animation_kx4o7"),
+"idle_right": SubResource("Animation_x1suu"),
+"idle_up": SubResource("Animation_v8yrb"),
+"moving_left": SubResource("Animation_uabwj"),
+"moving_right": SubResource("Animation_h10l3")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ynqpa"]
+animation = &"idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8hfn1"]
+animation = &"moving_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ykkke"]
+animation = &"moving_right"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_dly5d"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_ynqpa")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_8hfn1")
+blend_point_1/pos = 1.0
+blend_point_2/node = SubResource("AnimationNodeAnimation_ykkke")
+blend_point_2/pos = -1.0
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q0pok"]
+switch_mode = 1
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gj3rm"]
+states/End/position = Vector2(1098, 36)
+states/Move/node = SubResource("AnimationNodeBlendSpace1D_dly5d")
+states/Move/position = Vector2(281, 64)
+states/Start/position = Vector2(72, 64)
+transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_q0pok")]
+
+[node name="Asmongold" type="CharacterBody2D"]
+scale = Vector2(1.35, 1.35)
+motion_mode = 1
+script = ExtResource("1_qy2dp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ofqrc")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 2)
+texture = ExtResource("1_owxxx")
+
+[node name="AsmongoldSpritesheet" type="Sprite2D" parent="."]
+position = Vector2(-25.1852, -35.5556)
+texture = ExtResource("2_l8fij")
+centered = false
+flip_h = true
+hframes = 6
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fx0k7")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_fx0k7")
+}
+tree_root = SubResource("AnimationNodeStateMachine_gj3rm")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Move/blend_position = -0.903762

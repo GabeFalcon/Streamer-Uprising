@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwr5ottucu2bl"]
+
+[ext_resource type="PackedScene" uid="uid://drcvwjqqownbc" path="res://Entities/asmongold.tscn" id="1_7jj2l"]
+
+[node name="MainGame" type="Node2D"]
+
+[node name="Asmongold" parent="." instance=ExtResource("1_7jj2l")]
