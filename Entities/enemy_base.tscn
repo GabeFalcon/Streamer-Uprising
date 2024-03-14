@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://oqx01ke1l4vg"]
+
+[ext_resource type="Texture2D" uid="uid://b4rgjgjkpbvhc" path="res://Sprites/Enemies/Roach Enemy.png" id="1_8ojq8"]
+[ext_resource type="Script" path="res://Scripts/enemy_base.cs" id="1_tplws"]
+[ext_resource type="PackedScene" uid="uid://nrs2nhol7hkr" path="res://Entities/Utility/hurtbox.tscn" id="3_ousjb"]
+[ext_resource type="PackedScene" uid="uid://cb3esmbyi01qd" path="res://Entities/Utility/hitbox.tscn" id="4_xlmod"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0tlst"]
+radius = 6.59341
+height = 20.7792
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3oeh2"]
+size = Vector2(22.8571, 31.4286)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1umck"]
+size = Vector2(17.1429, 28.5715)
+
+[node name="enemy_roach" type="CharacterBody2D"]
+scale = Vector2(0.35, 0.35)
+collision_layer = 128
+collision_mask = 128
+motion_mode = 1
+script = ExtResource("1_tplws")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8ojq8")
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+scale = Vector2(1.3, 1.1)
+shape = SubResource("CapsuleShape2D_0tlst")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_ousjb")]
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(0, -1.42857)
+shape = SubResource("RectangleShape2D_3oeh2")
+
+[node name="Hitbox" parent="." instance=ExtResource("4_xlmod")]
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2(9.96249e-06, 2.04359e-06)
+scale = Vector2(0.999998, 0.999998)
+shape = SubResource("RectangleShape2D_1umck")
+
+[connection signal="Hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_enemy_base_hitbox_body_entered"]
+
+[editable path="Hurtbox"]
+[editable path="Hitbox"]

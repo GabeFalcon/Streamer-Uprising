@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://ckjf1yjke77yc"]
+
+[ext_resource type="Script" path="res://Scripts/WeaponBase.cs" id="1_s5v76"]
+[ext_resource type="Texture2D" uid="uid://cbq8jf0855tf7" path="res://Sprites/Asmongold and Weapon/AsmonGreatSword.png" id="2_pg5x6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfg6v"]
+atlas = ExtResource("2_pg5x6")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o6rm"]
+atlas = ExtResource("2_pg5x6")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyw37"]
+atlas = ExtResource("2_pg5x6")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_woagt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfg6v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8o6rm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyw37")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbsqt"]
+size = Vector2(31, 9)
+
+[node name="weapon_base" type="Node2D"]
+script = ExtResource("1_s5v76")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_woagt")
+frame = 2
+frame_progress = 0.42507
+
+[node name="Hitbox" type="Area2D" parent="AnimatedSprite2D"]
+
+[node name="Collider" type="CollisionShape2D" parent="AnimatedSprite2D/Hitbox"]
+position = Vector2(6.5, -0.5)
+shape = SubResource("RectangleShape2D_sbsqt")

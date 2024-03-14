@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dng808yjngfwk"
-path="res://.godot/imported/Asmongold Spritesheet.png-8c413b4cb9f8379b654d61fa2e5278e7.ctex"
+path="res://.godot/imported/Asmongold Spritesheet.png-7922b39f2675bae1bec7da1444790625.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Asmongold Spritesheet.png"
-dest_files=["res://.godot/imported/Asmongold Spritesheet.png-8c413b4cb9f8379b654d61fa2e5278e7.ctex"]
+source_file="res://Sprites/Asmongold and Weapon/Asmongold Spritesheet.png"
+dest_files=["res://.godot/imported/Asmongold Spritesheet.png-7922b39f2675bae1bec7da1444790625.ctex"]
 
 [params]
 
