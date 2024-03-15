@@ -22,6 +22,8 @@ public partial class hurtbox : Area2D
    [Signal]
    public delegate void HurtEventHandler(int damage);
 
+   private bool inContact = false;
+
    public override void _Ready()
    {
         // Obtain references to child nodes
@@ -30,14 +32,13 @@ public partial class hurtbox : Area2D
 
         // Connect the signal to appropriate method
         Connect("area_entered", new Godot.Callable(this, nameof(OnAreaEntered)));
-        Connect("timeout", new Godot.Callable(this, nameof(OnDisableTimerTimeout)));
+        //Connect("area_exited", new Godot.Callable(this, nameof(OnAreaExited)));
+        disableTimer.Connect("timeout", new Godot.Callable(this, nameof(OnDisableTimerTimeout)));
    }
 
     // Called when an object enters the area
     private void OnAreaEntered(Area2D area)
     {
-         // Your code here
-        GD.Print("Hurbox area entered!");
         // Check if the entering area is in the "attack" group
         if (area.IsInGroup("attack"))
         {
@@ -49,10 +50,8 @@ public partial class hurtbox : Area2D
                 {
                     // If HurtBoxType is Cooldown (0)
                     case HurtBoxType.Cooldown:
-                        // Disable collision shape
-                        collision.SetDeferred("get", true);
-                        // State disableTimer
-                        disableTimer.Start();
+                        collision.SetDeferred("disabled", true); // Disable collision shape
+                        disableTimer.Start();    // State disableTimer
                         break; // Exit Switch Statement
                     case HurtBoxType.HitOnce:
                         // Pass
@@ -62,10 +61,11 @@ public partial class hurtbox : Area2D
                         {
                             area.Call("tempdisable");
                         }
-                        var damageValue = (int)area.Get("damage");
-                        EmitSignal("HurtEventHandler", damageValue);
                         break;
                 }
+                var damage = (int)area.Get("damage");
+                EmitSignal("Hurt", damage);
+
             }
         }
     }

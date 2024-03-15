@@ -44,14 +44,18 @@ public partial class characterbase : CharacterBody2D // Declares a class that in
 		animationTree = GetNode<AnimationTree>("AnimationTree"); // Access the 'AnimationTree' node in the scene and assigns it to 'animationTree'
 		animationTree.Active = true; // Activate Animation Tree
 		sprite = GetNode<Sprite2D>("AsmongoldSpritesheet");
+
+		// Access The Hurtbox Script
+		hurtbox hurtboxInstance = GetNode<hurtbox>("Hurtbox");
+
+
+		hurtboxInstance.Connect("Hurt", new Godot.Callable(this, nameof(OnHurtboxHurt)));
 	}
 
-
-	public void OnHurtBoxHurt(int damage)
+	public void OnHurtboxHurt(int damage)
 	{
 		health -= damage;
 		GD.Print("Health:", health);
-		EmitSignal("Hurt", damage); // Emit signal indicating the character has taken damage
 	}
 
 	// User Inputs

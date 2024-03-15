@@ -91,8 +91,8 @@ texture = ExtResource("1_cchoe")
 0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.48008, 16.0867, -3.35876, 15.7331, -1.94454, 15.3796, -3.35876, 12.7279, 16.617, 13.435, 16.617, 17.6777, 19.0919, 18.3848, 21.625, 23, 24.0416, 36.416, 16.2635, 36.416, -6.71752, 37.1231, -13.7886, 36.416, -11.844, 27.4004, -10.253, 22.2739)
 
 [sub_resource type="TileSet" id="TileSet_e3b5x"]
-physics_layer_0/collision_layer = 32
-physics_layer_0/collision_mask = 32
+physics_layer_0/collision_layer = 9
+physics_layer_0/collision_mask = 73
 sources/2 = SubResource("TileSetAtlasSource_slnro")
 
 [node name="MainGame" type="Node2D"]
@@ -119,6 +119,9 @@ layer_3/z_index = 1
 layer_3/tile_data = PackedInt32Array(196600, 2, 3, -262136, 2, 3, -196613, 2, 9, 196614, 327682, 4)
 
 [node name="characterbase" parent="." instance=ExtResource("1_7jj2l")]
+collision_layer = 73
+collision_mask = 73
 
 [node name="enemy_roach" parent="." instance=ExtResource("4_5fudn")]
-position = Vector2(-51, 21)
+z_index = 1
+position = Vector2(-59, 32)

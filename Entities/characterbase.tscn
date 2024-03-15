@@ -170,6 +170,8 @@ size = Vector2(24, 46)
 
 [node name="characterbase" type="CharacterBody2D" groups=["player"]]
 scale = Vector2(0.3, 0.3)
+collision_layer = 64
+collision_mask = 64
 motion_mode = 1
 script = ExtResource("1_oqny3")
 
@@ -208,12 +210,13 @@ parameters/Move/blend_position = -1.0
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Hurtbox" parent="." instance=ExtResource("4_6emyh")]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2(-1.66667, -16.6667)
 shape = SubResource("RectangleShape2D_xskgn")
 
 [connection signal="Hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
-[connection signal="body_entered" from="Hurtbox" to="." method="_on_characterbase_hurtbox_body_entered"]
 
 [editable path="Hurtbox"]
