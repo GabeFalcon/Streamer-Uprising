@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bjwhpprhm1l37"]
+
+[ext_resource type="PackedScene" uid="uid://oqx01ke1l4vg" path="res://Entities/enemy_base.tscn" id="1_xf224"]
+[ext_resource type="Script" path="res://Scripts/SpawnInfo.cs" id="2_cb87j"]
+
+[resource]
+script = ExtResource("2_cb87j")
+TimeStart = 0
+TimeEnd = 50
+Enemy = ExtResource("1_xf224")
+EnemyNum = 1
+EnemySpawnDelay = 0

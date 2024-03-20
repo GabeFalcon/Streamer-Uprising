@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://drcvwjqqownbc" path="res://Entities/characterbase.tscn" id="1_7jj2l"]
 [ext_resource type="Texture2D" uid="uid://dqh0xki23lm5s" path="res://Sprites/Misc/tilemap1.png" id="1_cchoe"]
 [ext_resource type="Script" path="res://Scripts/main_game.cs" id="1_h4724"]
-[ext_resource type="PackedScene" uid="uid://oqx01ke1l4vg" path="res://Entities/enemy_base.tscn" id="4_5fudn"]
+[ext_resource type="PackedScene" uid="uid://yp7e7fji17m1" path="res://Entities/Utility/enemy_spawner.tscn" id="4_rti2f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_slnro"]
 texture = ExtResource("1_cchoe")
@@ -122,6 +122,4 @@ layer_3/tile_data = PackedInt32Array(196600, 2, 3, -262136, 2, 3, -196613, 2, 9,
 collision_layer = 73
 collision_mask = 73
 
-[node name="enemy_roach" parent="." instance=ExtResource("4_5fudn")]
-z_index = 1
-position = Vector2(-59, 32)
+[node name="EnemySpawner" parent="." instance=ExtResource("4_rti2f")]
